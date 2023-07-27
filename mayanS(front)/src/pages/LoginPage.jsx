@@ -35,7 +35,8 @@ export const LoginPage = () => {
         setDataUser(data.userLogged)
         // console.log(data, 'data', data.userLogged, 'ulogedd')
         setLoggedIn(true)
-        navigate('/ndash')
+        navigate('/dash')
+        window.location.reload();
       }
     } catch (err) {
       console.log(err)
@@ -44,6 +45,27 @@ export const LoginPage = () => {
     }
   }
 
+  const registerW = async (e) =>{
+    try {
+      navigate('/rw')
+      window.location.reload();
+    } catch (error) {
+      console.log(err)
+      alert(err.response?.data.message)
+      throw new Error('Error in register w')
+    }
+  }
+
+  const registerC = async (e) =>{
+    try {
+      navigate('/rc')
+      window.location.reload();
+    } catch (error) {
+      console.log(err)
+      alert(err.response?.data.message)
+      throw new Error('Error in register c')
+    }
+  }
 
 
   return (
@@ -80,8 +102,30 @@ export const LoginPage = () => {
                   </div>
 
                   <div className="">
-                    <button onClick={(e) => logIn(e)} type="button" className="btn btn-outline-light m-1">Login</button>
+                    <button onClick={(e) => logIn(e)} type="button" className="btn btn-outline-dark m-1">Login</button>
                   </div>
+                  {/* Modal para register */}
+                  <div className="">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      Register
+                    </button>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Selecciona el rol</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-footer d-flex justify-content-center">
+                            {/* <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> */}
+                            <button onClick={(e) => registerW(e)} type="button" class="btn btn-primary">Worker</button>
+                            <button onClick={(e) => registerC(e)}  type="button" class="btn btn-primary">Contractor</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                 </form>
               </div>
 

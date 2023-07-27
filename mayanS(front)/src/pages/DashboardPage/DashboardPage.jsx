@@ -20,14 +20,29 @@ export const DashboardPage = () => {
       <>
         {x === "ADMINAM" ? (
           <>
+            <li className="nav-item">
+              <Link to={"user"} className="nav-link">
+                Workers <i className="bi bi-cursor"></i>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"contractor"} className="nav-link">
+                Contractors <i className="bi bi-cursor"></i>
+              </Link>
+            </li>
             <li onClick={() => logOut()} className="nav-item">
               <Link className="nav-link">
                 LogOut  <i className="bi bi-box-arrow-left"></i>
               </Link>
             </li>
           </>
-        ) : x === "ADMIN" ? (
+        ) : x === "CONTRACTOR" ? (
           <>
+            <li onClick={() => logOut()} className="nav-item">
+              <Link className="nav-link">
+                LogOut  <i className="bi bi-box-arrow-left"></i>
+              </Link >
+            </li >
           </>
         ) : (
           <>
@@ -69,7 +84,7 @@ export const DashboardPage = () => {
             <a className="navbar-brand active">
               <i className="bi bi-person-circle"></i>
               <span className="text-info"> Dashboard </span>
-              
+
             </a>
             {/* <!-- boton del menu para resolucion movil --> */}
             <button

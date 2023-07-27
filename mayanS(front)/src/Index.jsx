@@ -6,8 +6,18 @@ import App from './App'
 import { DashboardPage } from './pages/DashboardPage/DashboardPage';
 import { HomePage } from './pages/HomePage/HomePage';
 import { NDash } from './pages/NDashBoard/NDash';
+import { RegisterW } from './pages/Register/RegisterW';
+import { RegisterC } from './pages/Register/RegisterC';
 
 /* ADMINAM */
+// ---# Users #---
+import { UserPage } from './pages/Users/UserPage';
+import { GetUser } from './pages/Users/GetUser';
+import { UpdateUser } from './pages/Users/UpdateUser';
+// --# Contractors #---
+import { ContractorPage } from './pages/Contractors/ContractorPage';
+import { GetContractor } from './pages/Contractors/GetContractor';
+import { UpdateContractor } from './pages/Contractors/UpdateContractor';
 
 /* CLIENT */
 
@@ -37,7 +47,34 @@ export const Index = () => {
     }, [])
 
     const ADMINAMRoutes = [
-
+        {
+            path: 'user',
+            element: <UserPage></UserPage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetUser></GetUser>
+                },
+                {
+                    path: 'updateuser/:_id',
+                    element: <UpdateUser></UpdateUser>
+                }
+            ]
+        },
+        {
+            path: 'contractor',
+            element: <ContractorPage></ContractorPage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetContractor></GetContractor>
+                },
+                {
+                    path: 'updateC/:_id',
+                    element: <UpdateContractor></UpdateContractor>
+                }
+            ]
+        }
     ]
 
     const CONTRACTORRoutes = [
@@ -55,23 +92,34 @@ export const Index = () => {
             children: [
                 {
                     path: '/',
-                    element: <HomePage/>
+                    element: <HomePage />
                 },
                 {
                     path: '/dash',
-                    element: <DashboardPage></DashboardPage> 
+                    element: loggedIn ? <DashboardPage></DashboardPage> : <LoginPage></LoginPage>,
+                    children: role === 'ADMINAM' ? ADMINAMRoutes :
+                        role === 'CONTRACTOR' ? CONTRACTORRoutes :
+                            WORKERRoutes
                 },
                 {
                     path: '/ndash',
                     element: loggedIn ? <NDash></NDash> : <LoginPage></LoginPage>,
-                    children: role === 'ADMINAM' ? ADMINAMRoutes : 
+                    children: role === 'ADMINAM' ? ADMINAMRoutes :
                         role === 'CONTRACTOR' ? CONTRACTORRoutes :
-                            WORKERRoutes 
+                            WORKERRoutes
                 },
                 {
                     path: '/login',
                     element: <LoginPage></LoginPage>
 
+                },
+                {
+                    path: '/rw',
+                    element: <RegisterW></RegisterW>
+                },
+                {
+                    path: '/rc',
+                    element: <RegisterC></RegisterC>
                 }
             ]
         }
