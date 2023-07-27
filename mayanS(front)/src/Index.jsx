@@ -40,10 +40,10 @@ export const Index = () => {
 
     ]
 
-    const ADMINRoutes = [
+    const CONTRACTORRoutes = [
     ]
 
-    const CLIENTRoutes = [
+    const WORKERRoutes = [
 
     ]
 
@@ -59,12 +59,19 @@ export const Index = () => {
                 },
                 {
                     path: '/dash',
-                    element: loggedIn ? <DashboardPage></DashboardPage> : <LoginPage></LoginPage>,
-                    children: role === "ADMINAM" ? ADMINAMRoutes : CLIENTRoutes
+                    element: <DashboardPage></DashboardPage> 
                 },
                 {
                     path: '/ndash',
-                    element: <NDash></NDash>
+                    element: loggedIn ? <NDash></NDash> : <LoginPage></LoginPage>,
+                    children: role === 'ADMINAM' ? ADMINAMRoutes : 
+                        role === 'CONTRACTOR' ? CONTRACTORRoutes :
+                            WORKERRoutes 
+                },
+                {
+                    path: '/login',
+                    element: <LoginPage></LoginPage>
+
                 }
             ]
         }

@@ -20,7 +20,7 @@ export const NDash = () => {
                     <>
                         <li class="nav-item">
                             <a href="#" class="nav-link align-middle px-0">
-                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">ADMINAM</span>
                             </a>
                         </li>
                         <li>
@@ -34,11 +34,11 @@ export const NDash = () => {
                         </li>
 
                     </>
-                ) : x === "ADMIN" ? (
+                ) : x === "CONTRACTOR" ? (
                     <>
                         <li class="nav-item">
                             <a href="#" class="nav-link align-middle px-0">
-                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">CONTRACTOR</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -51,7 +51,7 @@ export const NDash = () => {
                     <>
                         <li class="nav-item">
                             <a href="#" class="nav-link align-middle px-0">
-                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">WORKER</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -64,6 +64,12 @@ export const NDash = () => {
             </>
         )
     }
+
+    const logOut = () => {
+        localStorage.clear();
+        setLoggedIn(false);
+        navigate("/login");
+    };
 
     return (
         <>
@@ -87,10 +93,10 @@ export const NDash = () => {
                                         </svg></span> </a>
                                     <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                         <li class="w-100">
-                                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">1</span>  </a>
+                                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">View profile</span>  </a>
                                         </li>
-                                        <li>
-                                            <a href="#" class="nav-link px-0"> 2</a>
+                                        <li onClick={() => logOut()} >
+                                            <a href="#" class="nav-link px-0">Log Out</a>
                                         </li>
                                     </ul>
                                 </li>
