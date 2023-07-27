@@ -92,7 +92,7 @@ export const TableUser = () => {
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="24"
                                             height="24"
-                                            fill="currentColor"
+                                            fill="dark"
                                             class="bi bi-person-fill-gear"
                                             viewBox="0 0 16 16"
                                         >

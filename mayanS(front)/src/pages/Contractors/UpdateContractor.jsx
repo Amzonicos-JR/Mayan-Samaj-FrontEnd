@@ -62,9 +62,9 @@ export const UpdateContractor = () => {
                     <input type="text" className="form-control" id="inputS" defaultValue={user.surname} />
                 </div>
                 <br></br>
-                <button onClick={(e) => updateC(e)} className="btn btn-success m-1">Update</button>
+                <button onClick={(e) => updateC(e)} className="btn btn-dark m-1">Update</button>
                 <Link to='/dash/contractor'>
-                    <button className="btn btn-danger m-1">Cancel</button>
+                    <button className="btn btn-warning m-1">Cancel</button>
                 </Link>
             </form>
         </>

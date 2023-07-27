@@ -63,9 +63,9 @@ export const UpdateUser = () => {
                     <input type="text" className="form-control" id="inputSurname" defaultValue={user.surname} />
                 </div>
                 <br></br>
-                <button onClick={(e) => updateUser(e)} className="btn btn-success m-1">Update</button>
+                <button onClick={(e) => updateUser(e)} className="btn btn-dark m-1">Update</button>
                 <Link to='/dash/user'>
-                    <button className="btn btn-danger m-1">Cancel</button>
+                    <button className="btn btn-warning m-1">Cancel</button>
                 </Link>
             </form>
         </>
