@@ -18,7 +18,17 @@ import { UpdateUser } from './pages/Users/UpdateUser';
 import { ContractorPage } from './pages/Contractors/ContractorPage';
 import { GetContractor } from './pages/Contractors/GetContractor';
 import { UpdateContractor } from './pages/Contractors/UpdateContractor';
-
+//  --------------- Oficios ---------------
+import { OficioPage } from './pages/Oficios/OficioPage';
+import { AddOficio } from './pages/Oficios/AddOficio';
+import { GetOficios } from './pages/Oficios/GetOficios';
+import { UpdateOficio } from './pages/Oficios/UpdateOficio';
+//  --------------- Payments ---------------
+import { PaymentPage } from './pages/PaymentMethods/PaymentMethodPage';
+import { AddPaymentMethod } from './pages/PaymentMethods/AddPaymentMethod';
+import { GetPayments } from './pages/PaymentMethods/GetPaymentMethods';
+import { UpdatePayment } from './pages/PaymentMethods/UpdatePaymentMethod'; 
+ 
 /* CLIENT */
 
 export const AuthContext = createContext();
@@ -73,6 +83,42 @@ export const Index = () => {
                     path: 'updateC/:_id',
                     element: <UpdateContractor></UpdateContractor>
                 }
+            ]
+        },
+        {
+            path: 'oficios',
+            element: <OficioPage></OficioPage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetOficios></GetOficios>
+                },
+                {
+                    path: 'addoficio',
+                    element: <AddOficio></AddOficio>
+                },
+                {
+                    path: 'updateO/:_id',
+                    element: <UpdateOficio></UpdateOficio>
+                }
+            ]
+        },
+        {
+            path: 'payments',
+            element: <PaymentPage></PaymentPage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetPayments></GetPayments>
+                },
+                {
+                    path: 'addpayment',
+                    element: <AddPaymentMethod></AddPaymentMethod>
+                },
+                {
+                    path: 'updateP/:_id',
+                    element: <UpdatePayment></UpdatePayment>
+                } 
             ]
         }
     ]
