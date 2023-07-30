@@ -30,6 +30,16 @@ export const DashboardPage = () => {
                 Contractors <i className="bi bi-cursor"></i>
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to={"oficios"} className="nav-link">
+                Oficios <i className="bi bi-cursor"></i>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"payments"} className="nav-link">
+              Payment Method <i className="bi bi-cursor"></i>
+              </Link>
+            </li>
             <li onClick={() => logOut()} className="nav-item">
               <Link className="nav-link">
                 LogOut  <i className="bi bi-box-arrow-left"></i>
