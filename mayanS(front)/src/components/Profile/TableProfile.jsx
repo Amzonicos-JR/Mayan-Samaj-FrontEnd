@@ -70,12 +70,18 @@ export const TableProfile = () => {
             <div class="profile-card__txt">
               Email: <strong>{user.email}</strong>
             </div>
-            <div class="profile-card-loc">
+            <div class="profile-card__txt">
+              Phone: <strong>{user.phone}</strong>
+            </div>
+            <div class="profile-card__txt">
+              Role:  <strong> {user.role}</strong>
+            </div>
+            {/* <div class="profile-card-loc">
               <span class="profile-card-loc__txt">Phone: {user.phone}</span>
             </div>
             <div class="profile-card-loc">
-              <span class="profile-card-loc__txt">Role: {user.role}</span>
-            </div>
+            Role: <span class="profile-card-loc__txt">  {user.role}</span>
+            </div> */}
             {/* <div class="profile-card-inf">
               <div class="profile-card-inf__item">
                 <div class="profile-card-inf__title">{user.noCuenta}</div>
@@ -101,11 +107,11 @@ export const TableProfile = () => {
                 </button>
               </Link>
 
-              {/* <Link to='/dash/profile/editEmail'>
+              <Link to='/dash/profile/editEmail'>
                 <button class="profile-card__button button--orange m-2">
                   Change Email
                 </button>
-              </Link> */}
+              </Link>
             </div>
           </div>
         </div>

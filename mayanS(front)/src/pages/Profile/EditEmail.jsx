@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
 
-export const EditUser = () => {
+export const EditEmail = () => {
     const [user, setUser] = useState({});
     const navigate = useNavigate();
     const { _id } = useParams();
@@ -25,15 +25,15 @@ export const EditUser = () => {
 
     };
 
-    const updatedPassword = async (e) => {
+    const updatedEmail = async (e) => {
         try {
             e.preventDefault();
-            let updatePassword = {
-                password: document.getElementById('inputOldPassword').value,
-                newPassword: document.getElementById('inputPassword').value
+            let updateEmail = {
+                newEmail: document.getElementById('inputEmail').value,
+                password: document.getElementById('inputOldPassword').value
 
             }
-            const { data } = await axios.put(`http://localhost:3000/user/updatePassword`, updatePassword, {headers: headers})
+            const { data } = await axios.put(`http://localhost:3000/user/updateEmail`, updateEmail, {headers: headers})
             getUser();
             alert(`${data.message}`)
 
@@ -49,19 +49,19 @@ export const EditUser = () => {
     return (
         <>
             <h1 className='className="container d-flex justify-content-center align-items-center h-100"'>
-                Update Password
+                Update Email
             </h1>
             <form className="m-5 text-center">
                 <div className="mb-3">
-                    <label htmlFor="inpurOldPassword" className="form-label">Password</label>
-                    <input type="password" className="form-control" id="inputOldPassword" placeholder="Ingresa tu contraseña actual para validar el cambio" />
+                    <label htmlFor="inputEmail" className="form-label">New Email</label>
+                    <input type="text" className="form-control" id="inputEmail" placeholder="Ingresa tu nuevo email"/>
                 </div>
-                <div>
-                    <label htmlFor="inputPassword" className="form-label">New Password</label>
-                    <input type="password" className="form-control" id="inputPassword" placeholder="Ingresa tu nueva contraseña"/>
+                <div className="mb-3">
+                    <label htmlFor="inputOldPassword" className="form-label">Password</label>
+                    <input type="password" className="form-control" id="inputOldPassword" placeholder="Ingresa tu contraseña para validar el cambio" />
                 </div>
                 <br></br>
-                <button onClick={(e) => updatedPassword(e)} className="btn btn-success m-1">Update</button>
+                <button onClick={(e) => updatedEmail(e)} className="btn btn-success m-1">Update</button>
                 <Link to='/dash/profile'>
                     <button className="btn btn-danger m-1">Cancel</button>
                 </Link>

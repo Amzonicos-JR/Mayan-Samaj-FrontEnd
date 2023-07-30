@@ -21,6 +21,7 @@ import { UpdateContractor } from './pages/Contractors/UpdateContractor';
 import { EditUser } from './pages/Profile/EditUser';
 import { GetProfile } from './pages/Profile/GetProfile';
 import { ProfilePage } from './pages/Profile/ProfilePage';
+import { EditEmail } from './pages/Profile/EditEmail';
 
 /* CLIENT */
 
@@ -92,6 +93,10 @@ export const Index = () => {
                 {
                     path: 'editPassword',
                     element: <EditUser/>
+                },
+                {
+                    path: 'editEmail',
+                    element: <EditEmail/>
                 }
             ]
         }
@@ -109,6 +114,10 @@ export const Index = () => {
                 {
                     path: 'editPassword',
                     element: <EditUser />
+                },
+                {
+                    path: 'editEmail',
+                    element: <EditEmail/>
                 }
             ]
         }
