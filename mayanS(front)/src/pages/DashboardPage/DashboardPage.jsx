@@ -43,6 +43,11 @@ export const DashboardPage = () => {
                 LogOut  <i className="bi bi-box-arrow-left"></i>
               </Link >
             </li >
+            <li className="nav-item">
+              <Link to={"profile"} className="nav-link">
+                Profile <i className="bi bi-cursor"></i>
+              </Link>
+            </li>
           </>
         ) : (
           <>
@@ -51,6 +56,11 @@ export const DashboardPage = () => {
                 LogOut  <i className="bi bi-box-arrow-left"></i>
               </Link >
             </li >
+            <li className="nav-item">
+              <Link to={"profile"} className="nav-link">
+                Profile <i className="bi bi-cursor"></i>
+              </Link>
+            </li>
           </>
         )}
       </>

@@ -18,6 +18,9 @@ import { UpdateUser } from './pages/Users/UpdateUser';
 import { ContractorPage } from './pages/Contractors/ContractorPage';
 import { GetContractor } from './pages/Contractors/GetContractor';
 import { UpdateContractor } from './pages/Contractors/UpdateContractor';
+import { EditUser } from './pages/Profile/EditUser';
+import { GetProfile } from './pages/Profile/GetProfile';
+import { ProfilePage } from './pages/Profile/ProfilePage';
 
 /* CLIENT */
 
@@ -78,10 +81,37 @@ export const Index = () => {
     ]
 
     const CONTRACTORRoutes = [
+        {
+            path: 'profile',
+            element: <ProfilePage/>,
+            children: [
+                {
+                    path: '',
+                    element: <GetProfile/>
+                },
+                {
+                    path: 'editPassword',
+                    element: <EditUser/>
+                }
+            ]
+        }
     ]
 
     const WORKERRoutes = [
-
+        {
+            path: 'profile',
+            element: <ProfilePage />,
+            children: [
+                {
+                    path: '',
+                    element: <GetProfile />
+                },
+                {
+                    path: 'editPassword',
+                    element: <EditUser />
+                }
+            ]
+        }
     ]
 
     const routes = createBrowserRouter([
