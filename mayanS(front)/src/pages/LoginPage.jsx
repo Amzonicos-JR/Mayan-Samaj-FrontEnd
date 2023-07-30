@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../Index'
+import Swal from 'sweetalert2'
 import bl from '../assets/sb2.png'
 import '../Login.css'
 
@@ -28,7 +29,13 @@ export const LoginPage = () => {
       const { data } = await axios.post('http://localhost:3000/user/login', form)
       console.log(data.user)
       if (data.message) {
-        alert(data.message)
+        Swal.fire({
+          title: data.message,
+          icon: 'success',
+          timer: 10000,
+          showConfirmButton: false
+        })
+        //Alert nativo alert(data.message)
         localStorage.setItem('token', data.token)
         localStorage.setItem('_id', data.userLogged._id)
         localStorage.setItem('role', data.userLogged.role)
@@ -40,7 +47,8 @@ export const LoginPage = () => {
       }
     } catch (err) {
       console.log(err)
-      alert(err.response?.data.message)
+      // alert(err.response?.data.message)
+      Swal.fire('Error al loguearse', '', 'error')
       throw new Error('Error in login')
     }
   }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
-
+import Swal from 'sweetalert2'
 export const UpdateUser = () => {
     const [user, setUser] = useState({});
     const navigate = useNavigate();
@@ -37,7 +37,7 @@ export const UpdateUser = () => {
             const { data } = await axios.put(`http://localhost:3000/user/update/${_id}`, userUp, { headers: headers })
             console.log(user, 'userss')
             getUser();
-            alert(`${data.message}`)
+            Swal.fire(data.message, '', 'success')
 
             navigate('/dash/user')
         } catch (err) {

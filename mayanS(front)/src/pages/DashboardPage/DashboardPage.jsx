@@ -76,7 +76,7 @@ export const DashboardPage = () => {
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
       />
-      <div>
+      <div >
         {/* <!-- Inicio del menu --> */}
         <nav className="navbar navbar-expand-md navbar-dark bg-dark">
           <div className="container-fluid">
