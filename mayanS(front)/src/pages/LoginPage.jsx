@@ -98,17 +98,17 @@ export const LoginPage = () => {
             <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
               Register
             </button>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Select the role you want...</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div className="modal-dialog">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h5 className="modal-title" id="exampleModalLabel">Select the role you want...</h5>
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-                  <div class="modal-footer d-flex justify-content-center">
-                    {/* <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> */}
-                    <a onClick={(e) => registerW(e)} type="button" class="btn btn-dark">Worker</a>
-                    <a onClick={(e) => registerC(e)} type="button" class="btn btn-dark">Contractor</a>
+                  <div className="modal-footer d-flex justify-content-center">
+                    {/* <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button> */}
+                    <a onClick={(e) => registerW(e)} type="button" className="btn btn-dark">Worker</a>
+                    <a onClick={(e) => registerC(e)} type="button" className="btn btn-dark">Contractor</a>
                   </div>
                 </div>
               </div>

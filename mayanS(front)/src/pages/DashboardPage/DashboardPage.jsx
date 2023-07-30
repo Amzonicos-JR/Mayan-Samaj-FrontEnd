@@ -32,12 +32,12 @@ export const DashboardPage = () => {
             </li>
             <li className="nav-item">
               <Link to={"oficios"} className="nav-link">
-                Oficios <i className="bi bi-cursor"></i>
+                Jobs <i className="bi bi-cursor"></i>
               </Link>
             </li>
             <li className="nav-item">
               <Link to={"payments"} className="nav-link">
-              Payment Method <i className="bi bi-cursor"></i>
+                Payment Method <i className="bi bi-cursor"></i>
               </Link>
             </li>
             <li onClick={() => logOut()} className="nav-item">
@@ -48,14 +48,25 @@ export const DashboardPage = () => {
           </>
         ) : x === "CONTRACTOR" ? (
           <>
+            <li className="nav-item">
+              <Link to={"profile"} className="nav-link">
+                Profile <i class="bi bi-person-badge"></i>
+              </Link>
+            </li>
             <li onClick={() => logOut()} className="nav-item">
               <Link className="nav-link">
                 LogOut  <i className="bi bi-box-arrow-left"></i>
               </Link >
             </li >
+
           </>
         ) : (
           <>
+            <li className="nav-item">
+              <Link to={"profile"} className="nav-link">
+                Profile <i class="bi bi-person-badge"></i>
+              </Link>
+            </li>
             <li onClick={() => logOut()} className="nav-item">
               <Link className="nav-link">
                 LogOut  <i className="bi bi-box-arrow-left"></i>

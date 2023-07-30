@@ -3,7 +3,6 @@ export const Oficio = ({ name, description})=>{ //PROPS -> parámetros que se en
         <>
             <td>{name}</td>
             <td>{description}</td>
-            
         </>
     )
 }

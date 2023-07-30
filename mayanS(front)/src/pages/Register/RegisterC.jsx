@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Swal from 'sweetalert2'
 
 export const RegisterC = () => {
     const navigate = useNavigate()
@@ -20,7 +21,7 @@ export const RegisterC = () => {
                 password: document.getElementById('iPassword').value
             }
             const { data } = await axios.post('http://localhost:3000/user/registerC', user, { headers: headers })
-            alert(`${data.message}`)
+            Swal.fire(data.message, '', 'success')
             clear();
             navigate('/login')
         } catch (err) {
@@ -52,39 +53,39 @@ export const RegisterC = () => {
                         <form id="contacto">
                             <div className="mb-4 ">
                                 <label htmlFor="name"> <i className="bi bi-person-fill" ></i> Name</label>
-                                <input type="text" className="form-control" id="iName" />
+                                <input type="text" className="form-control" id="iName" placeholder="Enter your name" />
                                 <div className="text-danger "></div>
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="surname"> <i className="bi bi-person-bounding-box"></i> Surname</label>
-                                <input type="text" className="form-control" id="iSurname" />
+                                <label htmlFor="surname"> <i className="bi bi-person-bounding-box" ></i> Surname</label>
+                                <input type="text" className="form-control" id="iSurname" placeholder="Enter your surname" />
                                 <div className="text-danger"></div>
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="phone"><i className="bi bi-envelope-fill"></i> Phone</label>
-                                <input type="number" className="form-control" id="iPhone" />
+                                <label htmlFor="phone"><i className="bi bi-envelope-fill" ></i> Phone</label>
+                                <input type="number" className="form-control" id="iPhone" placeholder="Enter your phone number" />
                                 <div className="text-danger"></div>
 
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="email"> <i className="bi bi-person-fill"></i> Email</label>
-                                <input type="text" className="form-control" id="iEmail" />
+                                <label htmlFor="email"> <i className="bi bi-person-fill" ></i> Email</label>
+                                <input type="text" className="form-control" id="iEmail" placeholder="Enter your email" />
                                 <div className="text-danger "></div>
                             </div>
                             <div className="mb-4">
-                                <label htmlFor="password"> <i className="bi bi-incognito"></i> Password</label>
-                                <input type="password" className="form-control" id="iPassword" />
+                                <label htmlFor="password"> <i className="bi bi-incognito" ></i> Password</label>
+                                <input type="password" className="form-control" id="iPassword" placeholder="Enter your password" />
                                 <div className="text-danger "></div>
                             </div>
                             <br></br>
                             <div className="mb-4 d-flex align-items-center">
                                 <div className="mb-2">
-                                    <a onClick={(e) => registerC(e)} className="col-11 btn btn-primary d-flex justify-content-between"
+                                    <a onClick={(e) => registerC(e)} className="col-11 btn btn-dark d-flex justify-content-between"
                                     >Save Data <i className="bi bi-bookmark-check"></i></a>
                                 </div>
 
                                 <div className="mb-2">
-                                    <Link to='/login' className="col-11 btn btn-primary d-flex justify-content-between">
+                                    <Link to='/login' className="col-11 btn btn-warning d-flex justify-content-between">
                                         Return to <i className="bi bi-box-arrow-left"></i></Link>
                                 </div>
                             </div>

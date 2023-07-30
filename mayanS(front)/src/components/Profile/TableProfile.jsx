@@ -68,13 +68,21 @@ export const TableProfile = () => {
               {user.name} {user.surname}
             </div>
             <div class="profile-card__txt">
-              Username: <strong>{user.username}</strong>
+              Email: <strong>{user.email}</strong>
+            </div>
+            <div class="profile-card__txt">
+              Phone: <strong>{user.phone}</strong>
+            </div>
+            <div class="profile-card__txt">
+              Role:  <strong> {user.role}</strong>
+            </div>
+            {/* <div class="profile-card-loc">
+              <span class="profile-card-loc__txt">Phone: {user.phone}</span>
             </div>
             <div class="profile-card-loc">
-              <span class="profile-card-loc__txt">DPI: {user.DPI}</span>
-            </div>
-
-            <div class="profile-card-inf">
+            Role: <span class="profile-card-loc__txt">  {user.role}</span>
+            </div> */}
+            {/* <div class="profile-card-inf">
               <div class="profile-card-inf__item">
                 <div class="profile-card-inf__title">{user.noCuenta}</div>
                 <div class="profile-card-inf__txt">No. Cuenta</div>
@@ -90,18 +98,18 @@ export const TableProfile = () => {
                 <div class="profile-card-inf__title">Q.{user.balance}</div>
                 <div class="profile-card-inf__txt">Balance</div>
               </div>
-            </div>
+            </div> */}
 
             <div className="profile-card-ctr">
-              <Link to='/dash/profile/edit'>
+              <Link to='/dash/profile/editPassword'>
                 <button class="profile-card__button button--blue m-2">
                   Change Password
                 </button>
               </Link>
 
-              <Link to='/dash/profile/history'>
+              <Link to='/dash/profile/editEmail'>
                 <button class="profile-card__button button--orange m-2">
-                  History
+                  Change Email
                 </button>
               </Link>
             </div>

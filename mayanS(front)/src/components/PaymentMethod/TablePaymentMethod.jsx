@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { PaymentMethod } from "./PaymentMethod";
-
+import Swal from 'sweetalert2'
 export const TablePaymentMethod = () => {
   /*  const [iAccount, setIDAccount] = useState(); */
   const [payments, setPatments] = useState([{}]);
@@ -27,15 +27,28 @@ export const TablePaymentMethod = () => {
 
   const deletePayment = async (id) => {
     try {
-      let confirmDelete = confirm("Are you sure to delete this Payment?");
-      if (confirmDelete) {
-        const { data } = await axios.delete(
-          `http://localhost:3000/paymentMethod/delete/${id}`,
-          { headers: headers }
-        );
-        getPayments();
-        alert(`${data.message}`);
-      }
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "Action not reversible",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#000000',
+        cancelButtonColor: '#dccd30 ',
+        confirmButtonText: 'Yes, Im sure'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const { data } = axios.delete(
+            `http://localhost:3000/paymentMethod/delete/${id}`,
+            { headers: headers }
+          );
+          Swal.fire(
+            'Deleted!',
+            'Your Payment Method has been deleted forever!.',
+            'success'
+          )
+          getPayments();
+        }
+      })
     } catch (err) {
       console.error(err);
     }
@@ -54,10 +67,10 @@ export const TablePaymentMethod = () => {
       <table className="table table-striped">
         <thead>
           <tr className="text-center">
-            <th><i class="bi bi-person-square"></i>Name</th>
-            <th><i class="bi bi-card-text"></i>Payment Method Type</th>
+            <th><i class="bi bi-person-square"></i> Name</th>
+            <th><i class="bi bi-card-text"></i> Payment Method Type</th>
             <th><i class="bi bi-person-bounding-box"></i> Update</th>
-            <th><i class="bi bi-trash-fill"></i>Delete</th>
+            <th><i class="bi bi-trash-fill"></i>  Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -91,10 +104,10 @@ export const TablePaymentMethod = () => {
                     fill="currentColor"
                     class="bi bi-person-fill-dash text-danger"
                     viewBox="0 0 16 16"
-                >
+                  >
                     <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM11 12h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1Zm0-7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                     <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4Z" />
-                </svg>
+                  </svg>
                 </td>
 
               </tr>

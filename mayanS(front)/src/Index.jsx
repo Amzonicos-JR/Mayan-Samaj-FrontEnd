@@ -29,6 +29,11 @@ import { AddPaymentMethod } from './pages/PaymentMethods/AddPaymentMethod';
 import { GetPayments } from './pages/PaymentMethods/GetPaymentMethods';
 import { UpdatePayment } from './pages/PaymentMethods/UpdatePaymentMethod'; 
  
+import { EditUser } from './pages/Profile/EditUser';
+import { GetProfile } from './pages/Profile/GetProfile';
+import { ProfilePage } from './pages/Profile/ProfilePage';
+import { EditEmail } from './pages/Profile/EditEmail';
+
 /* CLIENT */
 
 export const AuthContext = createContext();
@@ -124,10 +129,45 @@ export const Index = () => {
     ]
 
     const CONTRACTORRoutes = [
+        {
+            path: 'profile',
+            element: <ProfilePage/>,
+            children: [
+                {
+                    path: '',
+                    element: <GetProfile/>
+                },
+                {
+                    path: 'editPassword',
+                    element: <EditUser/>
+                },
+                {
+                    path: 'editEmail',
+                    element: <EditEmail/>
+                }
+            ]
+        }
     ]
 
     const WORKERRoutes = [
-
+        {
+            path: 'profile',
+            element: <ProfilePage />,
+            children: [
+                {
+                    path: '',
+                    element: <GetProfile />
+                },
+                {
+                    path: 'editPassword',
+                    element: <EditUser />
+                },
+                {
+                    path: 'editEmail',
+                    element: <EditEmail/>
+                }
+            ]
+        }
     ]
 
     const routes = createBrowserRouter([
