@@ -44,7 +44,7 @@ export const EditUser = () => {
 
             navigate('/dash/profile')
         } catch (err) {
-            console.error(err)
+            Swal.fire("Password do not match", '', 'error')
         }
     }
 
