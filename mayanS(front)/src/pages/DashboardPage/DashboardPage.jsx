@@ -64,6 +64,11 @@ export const DashboardPage = () => {
                 Email <i class="bi bi-envelope"></i>
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to={"job"} className="nav-link">
+                My Jobs <i class="bi bi-card-checklist"></i>
+              </Link>
+            </li>             
             <li onClick={() => logOut()} className="nav-item">
               <Link className="nav-link">
                 LogOut  <i className="bi bi-box-arrow-left"></i>
@@ -82,6 +87,11 @@ export const DashboardPage = () => {
                 Email <i class="bi bi-envelope"></i>
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to={"job"} className="nav-link">
+                Jobs <i class="bi bi-card-checklist"></i>
+              </Link>
+            </li>             
             <li onClick={() => logOut()} className="nav-item">
               <Link className="nav-link">
                 LogOut  <i className="bi bi-box-arrow-left"></i>
