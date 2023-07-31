@@ -118,8 +118,8 @@ export const DashboardPage = () => {
           <div className="container-fluid">
             {/* <!-- icono o nombre --> */}
             <a className="navbar-brand active">
-              <i className="bi bi-person-circle"></i>
-              <span className="text-info"> Dashboard </span>
+              <i class="bi bi-apple"></i>
+              <span className="text-info"> Mayan Samaj </span>
 
             </a>
             {/* <!-- boton del menu para resolucion movil --> */}
