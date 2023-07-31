@@ -3,7 +3,6 @@ import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../Index'
 import Swal from 'sweetalert2'
-import bl from '../assets/sb2.png'
 import '../Login.css'
 
 
