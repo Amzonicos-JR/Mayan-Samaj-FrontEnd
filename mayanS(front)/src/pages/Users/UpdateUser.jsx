@@ -31,8 +31,8 @@ export const UpdateUser = () => {
             e.preventDefault();
             let userUp = {
                 name: document.getElementById('inputName').value,
-                surname: document.getElementById('inputSurname').value
-                // phone: document.getElementById('inputPhone').value            
+                surname: document.getElementById('inputSurname').value,
+                email: document.getElementById('inputEmail').value
             }
             const { data } = await axios.put(`http://localhost:3000/user/update/${_id}`, userUp, { headers: headers })
             Swal.fire(data.message, '', 'success')
@@ -59,6 +59,10 @@ export const UpdateUser = () => {
                 <div>
                     <label htmlFor="inputSurname" className="form-label">Surname</label>
                     <input type="text" className="form-control" id="inputSurname" defaultValue={user.surname} />
+                </div>
+                <div>
+                    <label htmlFor="inputEmail" className="form-label">Email</label>
+                    <input type="text" className="form-control" id="inputEmail" defaultValue={user.email} />
                 </div>
                 <br></br>
                 <button onClick={(e) => updateUser(e)} className="btn btn-dark m-1">Update</button>

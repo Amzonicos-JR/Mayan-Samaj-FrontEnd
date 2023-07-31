@@ -32,11 +32,6 @@ export const DashboardPage = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to={"oficios"} className="nav-link">
-                Jobs <i className="bi bi-cursor"></i>
-              </Link>
-            </li>
-            <li className="nav-item">
               <Link to={"payments"} className="nav-link">
                 Payment Method <i className="bi bi-cursor"></i>
               </Link>
@@ -68,7 +63,7 @@ export const DashboardPage = () => {
               <Link to={"job"} className="nav-link">
                 My Jobs <i class="bi bi-card-checklist"></i>
               </Link>
-            </li>             
+            </li>
             <li onClick={() => logOut()} className="nav-item">
               <Link className="nav-link">
                 LogOut  <i className="bi bi-box-arrow-left"></i>
@@ -91,7 +86,7 @@ export const DashboardPage = () => {
               <Link to={"job"} className="nav-link">
                 Jobs <i class="bi bi-card-checklist"></i>
               </Link>
-            </li>             
+            </li>
             <li onClick={() => logOut()} className="nav-item">
               <Link className="nav-link">
                 LogOut  <i className="bi bi-box-arrow-left"></i>
