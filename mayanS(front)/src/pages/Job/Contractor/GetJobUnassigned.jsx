@@ -128,7 +128,7 @@ export const GetJobUnassigned = () => {
                         <div className="card-body">
                           <Link to={`update/${_id}`}>
                             <button
-                              className="button3 m-2 p-3"
+                              className="button3 m-2 p-4"
                               style={buttonStyle3}
                             >
                               <span>Update</span>
@@ -137,7 +137,7 @@ export const GetJobUnassigned = () => {
                           </Link>
                           <Link onClick={() => deleteJob(_id)}>
                             <button
-                              className="button2 m-2 p-3"
+                              className="button2 m-2 p-4"
                               style={buttonStyle2}
                             >
                               <span>Delete</span>
@@ -146,7 +146,7 @@ export const GetJobUnassigned = () => {
                           </Link>
                           <Link to={`requests/${_id}`}>
                             <button
-                              className="button5 m-2 p-3"
+                              className="button5 m-2 p-4"
                               style={buttonStyle5}
                             >
                               <span>Request</span>
@@ -155,7 +155,7 @@ export const GetJobUnassigned = () => {
                           </Link>
                           <Link to={`viewmore/${_id}`}>
                             <button
-                              className="button4 m-2 p-3"
+                              className="button4 m-2 p-4"
                               style={buttonStyle4}
                             >
                               <span>View More</span>

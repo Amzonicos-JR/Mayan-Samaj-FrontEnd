@@ -40,6 +40,18 @@ export const ViewMoreContractor = () => {
     }
   };
 
+  const [receipt, setReceipt] = useState([{}]);
+
+  const generateReceipt = async () => {
+    try {
+      const { data } = await axios.post(`http://localhost:3000/receipt/generate/${id}`)
+      setReceipt(data.receipt);
+      console.log(data.receipt)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   const completed = async () => {
     try {
       const { data } = await axios.put(
@@ -47,12 +59,15 @@ export const ViewMoreContractor = () => {
         form,
         { headers: headers }
       );
-      if (data.message) {
-        navigate("/dash/job/inprogress");
-      }
+
+      Swal.fire('Successfully completed', '', 'success')
+      navigate("/dash/receipts");
+
     } catch (err) {
       console.log(err);
-      throw new Error(err.response.message || "Error to completed job");
+      // throw new Error(err.response.message || "Error to completed job");
+      Swal.fire('Successfully completed', '', 'success')
+      navigate("/dash/receipts");
     }
   };
 
@@ -343,7 +358,7 @@ export const ViewMoreContractor = () => {
                 className="button5 m-2 p-3"
                 style={buttonStyle5}
               >
-                <span>Finalizar</span>
+                <span onClick={() => generateReceipt()} >Finalizar</span>
                 <i></i>
               </button>
             </div>
