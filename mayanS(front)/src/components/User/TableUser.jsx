@@ -63,6 +63,7 @@ export const TableUser = () => {
                         'Your User has been deleted forever!.',
                         'success'
                     )
+                    
                     getWorkers();
                 }
             })
