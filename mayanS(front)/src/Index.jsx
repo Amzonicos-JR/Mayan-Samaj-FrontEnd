@@ -36,6 +36,25 @@ import { EditEmail } from './pages/Profile/EditEmail';
 import ReceiptPage from './pages/Receipt/ReceiptPage';
 import EmailPage from './pages/EmailPage';
 
+/* CONTRACTOR */
+// ---# Job #---
+import { JobPage } from './pages/Job/JobPage';
+import { GetMyJob } from './pages/Job/GetMyJob';
+import { AddJob } from './pages/Job/AddJob';
+import { UpdateJob } from './pages/Job/UpdateJob';
+import { RequestsJob } from './pages/Job/RequestsJob';
+import { ViewMore } from './pages/Job/Worker/ViewMore';
+import { GetJob } from './pages/Job/GetJob';
+import { ApplyJob } from './pages/Job/Worker/ApplyJob';
+import { GetJobUnassigned } from './pages/Job/Contractor/GetJobUnassigned';
+import { GetJobInProgress } from './pages/Job/Contractor/GetJobInProgress';
+import { GetJobCompleted } from './pages/Job/Contractor/GetJobCompleted';
+import { GetJobNotAppleid } from './pages/Job/Worker/GetJobNotApplied';
+import { GetJobApplied } from './pages/Job/Worker/GetJobApplied';
+import { GetJobCompletedWorker } from './pages/Job/Worker/GetJobCompletedWorker';
+import { GetJobInProgressWorker } from './pages/Job/Worker/GetJobInProgressWorker';
+import { ViewMoreContractor } from './pages/Job/Contractor/ViewMoreContractor';
+
 /* CLIENT */
 
 export const AuthContext = createContext();
@@ -127,7 +146,8 @@ export const Index = () => {
                     element: <UpdatePayment></UpdatePayment>
                 } 
             ]
-        }
+        },
+
     ]
 
     const CONTRACTORRoutes = [
@@ -156,7 +176,47 @@ export const Index = () => {
         {
             path: 'email',
             element: <EmailPage></EmailPage>
-        }
+        },
+        {
+            path: 'job',
+            element: <JobPage></JobPage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetMyJob></GetMyJob>,
+                    children: [
+                        {
+                            path: '',
+                            element: <GetJobUnassigned></GetJobUnassigned>
+                        },
+                        {
+                            path: 'inprogress',
+                            element: <GetJobInProgress></GetJobInProgress>
+                        },
+                        {
+                            path: 'completed',
+                            element: <GetJobCompleted></GetJobCompleted>
+                        }
+                    ]
+                },
+                {
+                    path: 'add',
+                    element: <AddJob></AddJob>
+                },
+                {
+                    path: 'update/:id',
+                    element: <UpdateJob></UpdateJob>
+                },
+                {
+                    path: 'requests/:id',
+                    element: <RequestsJob></RequestsJob>
+                },
+                {
+                    path: 'viewmore/:id',
+                    element: <ViewMoreContractor></ViewMoreContractor>
+                }
+            ]
+        }        
     ]
 
     const WORKERRoutes = [
@@ -181,7 +241,43 @@ export const Index = () => {
         {
             path: 'email',
             element: <EmailPage></EmailPage>
-        }
+        },
+        {
+            path: 'job',
+            element: <JobPage></JobPage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetJob></GetJob>,
+                    children: [
+                        {
+                            path: '',
+                            element: <GetJobNotAppleid></GetJobNotAppleid>
+                        },
+                        {
+                            path: 'applied',
+                            element: <GetJobApplied></GetJobApplied>
+                        },
+                        {
+                            path: 'inprogress',
+                            element: <GetJobInProgressWorker></GetJobInProgressWorker>
+                        },
+                        {
+                            path: 'completed',
+                            element: <GetJobCompletedWorker></GetJobCompletedWorker>
+                        }                        
+                    ]
+                },
+                {
+                    path: 'viewmore/:id',
+                    element: <ViewMore></ViewMore>
+                },
+                {
+                    path: 'apply/:id',
+                    element: <ApplyJob></ApplyJob>
+                }
+            ]
+        }        
     ]
 
     const routes = createBrowserRouter([
