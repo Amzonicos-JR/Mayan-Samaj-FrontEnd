@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
 
 export const GetJobApplied = () => {
   const buttonclr2 = "#db3444";
@@ -33,17 +34,41 @@ export const GetJobApplied = () => {
 
   const deleteRequest = async (_id) => {
     try {
-      let confirmDelete = confirm(`Are you sure to delete this request ${_id}`);
-      if (confirmDelete) {
-        const { data } = await axios.delete(
-          `http://localhost:3000/request/delete/${_id}`,
-          { headers: headers }
-        );
-        if (data.message) {
-          alert(data.message);
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "Action not reversible",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#000000',
+        cancelButtonColor: '#dccd30 ',
+        confirmButtonText: 'Yes, Im sure'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const { data } =  axios.delete(
+            `http://localhost:3000/request/delete/${_id}`,
+            { headers: headers }
+          );
+          Swal.fire(
+            'Canceled!',
+            'Successfully',
+            'success'
+          )
+
           getMyJob();
         }
-      }
+      })
+
+      // let confirmDelete = confirm(`Are you sure to delete this request ${_id}`);
+      // if (confirmDelete) {
+      //   const { data } = await axios.delete(
+      //     `http://localhost:3000/request/delete/${_id}`,
+      //     { headers: headers }
+      //   );
+      //   if (data.message) {
+      //     alert(data.message);
+      //     getMyJob();
+      //   }
+      // }
     } catch (err) {
       console.log(err);
       throw new Error(err.response.message || "Error to deleted request");

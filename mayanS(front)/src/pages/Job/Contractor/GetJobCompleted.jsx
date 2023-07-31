@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./GetJobUnassigned.css";
+import Swal from 'sweetalert2'
 
 export const GetJobCompleted = () => {
   const buttonclr4 = "#10cbf2";

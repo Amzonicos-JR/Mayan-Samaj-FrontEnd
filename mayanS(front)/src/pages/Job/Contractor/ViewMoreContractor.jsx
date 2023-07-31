@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "../Contractor/GetJobUnassigned.css";
+import Swal from 'sweetalert2'
 
 export const ViewMoreContractor = () => {
   const buttonclr2 = "#db3444";

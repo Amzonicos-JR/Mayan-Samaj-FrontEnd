@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import Swal from 'sweetalert2'
 export const AddJob = () => {
   const buttonclr2 = "#db3444";
   const buttonclr5 = "#19d982";
@@ -37,7 +37,8 @@ export const AddJob = () => {
         headers: headers,
       });
       if (data) {
-        alert(data.message);
+        Swal.fire(data.message, '', 'success')
+        // alert(data.message);
         navigate("/dash/job");
       }
     } catch (err) {

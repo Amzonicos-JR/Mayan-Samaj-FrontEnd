@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-
+import Swal from 'sweetalert2'
 export const GetJob = () => {
   const [activeButton, setActiveButton] = useState("button6");
   const cambio = (buttonId) => {

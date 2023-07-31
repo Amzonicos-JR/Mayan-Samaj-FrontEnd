@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import "./Contractor/GetJobUnassigned.css";
-
+import Swal from 'sweetalert2'
 export const GetMyJob = () => {
   const [activeButton, setActiveButton] = useState("button6");
   const cambio = (buttonId) => {

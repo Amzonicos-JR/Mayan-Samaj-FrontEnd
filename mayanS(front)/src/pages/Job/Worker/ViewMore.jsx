@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-
+import Swal from 'sweetalert2'
 export const ViewMore = () => {
   const buttonclr2 = "#db3444";
   const buttonStyle2 = {

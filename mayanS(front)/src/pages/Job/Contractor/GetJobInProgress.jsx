@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./GetJobUnassigned.css";
+import Swal from 'sweetalert2'
 
 export const GetJobInProgress = () => {
   const buttonclr2 = "#db3444";
@@ -38,15 +39,37 @@ export const GetJobInProgress = () => {
 
   const deleteJob = async (id) => {
     try {
-      let confirmDelete = confirm(`Are you sure to delete this product ${id}`);
-      if (confirmDelete) {
-        const { data } = await axios.delete(
-          `http://localhost:3000/job/delete/${id}`,
-          { headers: headers }
-        );
-        getMyJob();
-        alert(data.message);
-      }
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "Action not reversible",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#000000',
+        cancelButtonColor: '#dccd30 ',
+        confirmButtonText: 'Yes, Im sure'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const { data } = axios.delete(
+            `http://localhost:3000/job/delete/${id}`,
+            { headers: headers }
+          );
+          Swal.fire(
+            'Deleted!',
+            'Successfully!.',
+            'success'
+          )
+          getMyJob();
+        }
+      })
+      // let confirmDelete = confirm(`Are you sure to delete this product ${id}`);
+      // if (confirmDelete) {
+      //   const { data } = await axios.delete(
+      //     `http://localhost:3000/job/delete/${id}`,
+      //     { headers: headers }
+      //   );
+      //   getMyJob();
+      //   alert(data.message);
+      // }
     } catch (err) {
       console.log(err);
       throw new Error(err.response.message || "Error to deleted job");
@@ -94,7 +117,7 @@ export const GetJobInProgress = () => {
                             </button>
                           </Link>
                           <Link to={`/dash/job/viewmore/${_id}`}>
-                          <button
+                            <button
                               className="button5 m-4 p-3"
                               style={buttonStyle5}
                             >
@@ -103,7 +126,7 @@ export const GetJobInProgress = () => {
                             </button>
                           </Link>
                           <Link to={`/dash/job/viewmore/${_id}`}>
-                          <button
+                            <button
                               className="button4 m-4 p-3"
                               style={buttonStyle4}
                             >
