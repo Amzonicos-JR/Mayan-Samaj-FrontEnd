@@ -18,6 +18,7 @@ export const DashboardPage = () => {
     // console.log(x)
     return (
       <>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"></link>
         {x === "ADMINAM" ? (
           <>
             <li className="nav-item">
@@ -60,7 +61,7 @@ export const DashboardPage = () => {
             </li>
             <li className="nav-item">
               <Link to={"email"} className="nav-link">
-                Email <i class="bi bi-cursor"></i>
+                Email <i class="bi bi-envelope"></i>
               </Link>
             </li>
             <li onClick={() => logOut()} className="nav-item">
@@ -78,7 +79,7 @@ export const DashboardPage = () => {
             </li>
             <li className="nav-item">
               <Link to={"email"} className="nav-link">
-                Email <i class="bi bi-cursor"></i>
+                Email <i class="bi bi-envelope"></i>
               </Link>
             </li>
             <li onClick={() => logOut()} className="nav-item">

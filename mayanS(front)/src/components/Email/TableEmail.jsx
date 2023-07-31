@@ -62,7 +62,7 @@ const TableEmail = () => {
     return (
         <>
             <br />
-            <h1 className="text-center">Email</h1>
+            <h1 className="text-center"><i class="bi bi-envelope-heart"></i> Email <i class="bi bi-envelope-heart"></i></h1>
             <br />
             <div className="text-center">
                 <button data-bs-toggle="modal" data-bs-target="#exampleModal2" type="button" class="btn btn-outline-primary">New Email</button>
@@ -76,19 +76,19 @@ const TableEmail = () => {
                         </div>
                         <div class="modal-body">
                             <form action="">
-                                <label htmlFor="inputSubject" className="form-label">Subject:</label>
+                                <label htmlFor="inputSubject" className="form-label"><i class="bi bi-person-bounding-box"></i> Subject:</label>
                                 <input placeholder="Enter Subject" type="text" className="form-control" id="inputSubject" required />
                                 <br />
-                                <label htmlFor="inputMessage" className="form-label">Message:</label>
+                                <label htmlFor="inputMessage" className="form-label"><i class="bi bi-chat-right-dots-fill"></i> Message:</label>
                                 <input placeholder="Enter message" type="text" className="form-control" id="inputMessage" required />
                                 <br />
-                                <label htmlFor="inputForPerson" className="form-label">For:</label>
+                                <label htmlFor="inputForPerson" className="form-label"><i class="bi bi-people-fill"></i> For:</label>
                                 <input placeholder="Enter email" type="email" className="form-control" id="inputForPerson" required />
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button onClick={() => sendEmail()} type="button" class="btn btn-primary" data-bs-dismiss="modal">Send</button>
+                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                            <button onClick={() => sendEmail()} type="button" class="btn btn-warning" data-bs-dismiss="modal">Send</button>
                         </div>
                     </div>
                 </div>
@@ -96,9 +96,9 @@ const TableEmail = () => {
             <table className="table table-striped">
                 <thead>
                     <tr className="text-center">
-                        <th>From</th>
-                        <th>Subject</th>
-                        <th>Date</th>
+                        <th><i class="bi bi-person-bounding-box"></i> From</th>
+                        <th><i class="bi bi-bookmark-star-fill"></i> Subject</th>
+                        <th><i class="bi bi-calendar-week-fill"></i> Date</th>
                     </tr>
                 </thead>
                 <tbody>
