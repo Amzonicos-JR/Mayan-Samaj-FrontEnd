@@ -23,30 +23,42 @@ export const EditUser = () => {
             console.log(err);
             throw new Error(err.response.message || data, "Error getting users");
         }
-
+        
     };
 
     const updatedPassword = async (e) => {
         try {
             e.preventDefault();
-            let updatePassword = {
-                password: document.getElementById('inputOldPassword').value,
-                newPassword: document.getElementById('inputPassword').value
 
+            let oldPassword = document.getElementById("inputOldPassword").value;
+            let newPassword = document.getElementById("inputPassword").value;
+
+            if (!oldPassword || !newPassword) {
+                Swal.fire('Please provide both old and new passwords', '', 'warning')
+                return;
             }
-            const { data } = await axios.put(`http://localhost:3000/user/updatePassword`, updatePassword, { headers: headers })
-
-            console.log(data.message, 'ss')
-            Swal.fire(data.message, '', 'success')
-            getUser();
-
-
-
-            navigate('/dash/profile')
+            let updatePassword = {
+                password: document.getElementById("inputOldPassword").value,
+                newPassword: document.getElementById("inputPassword").value,
+            };
+            const { data } = await axios.put(
+                `http://localhost:3000/user/updatePassword`,
+                updatePassword,
+                { headers: headers }
+            );
+            if (data.error) {
+                Swal.fire(data.error, '', 'error')
+            } else {
+                getUser();
+                Swal.fire(data.message, '', 'success')
+                navigate("/dash/profile");
+            }
         } catch (err) {
-            Swal.fire("Password do not match", '', 'error')
+            console.error(err);
+            Swal.fire(`Can't updated the password, verify`, '', 'error')
+            // alert(`Can't updated the password, verify`);
         }
-    }
+    };
 
     useEffect(() => {
         getUser();

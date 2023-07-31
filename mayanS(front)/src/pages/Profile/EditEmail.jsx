@@ -29,18 +29,35 @@ export const EditEmail = () => {
     const updatedEmail = async (e) => {
         try {
             e.preventDefault();
+            let email = document.getElementById("inputEmail").value;
+            let password = document.getElementById("inputOldPassword").value;
+
+            if (!email || !password) {
+                Swal.fire('Please fill in all fields', '', 'warning')
+                // alert("Por favor rellene todos los campos");
+                return;
+            }
+
             let updateEmail = {
                 newEmail: document.getElementById('inputEmail').value,
                 password: document.getElementById('inputOldPassword').value
 
             }
             const { data } = await axios.put(`http://localhost:3000/user/updateEmail`, updateEmail, { headers: headers })
-            Swal.fire(data.message, '', 'success')
-            getUser();
 
-            navigate('/dash/profile')
+            if (data.error) {
+                Swal.fire(data.error, '', 'error')
+                // alert(data.error);
+                return;
+            } else {
+                getUser();
+                Swal.fire(data.message, '', 'success')
+                // alert(`${data.message}`)
+                navigate('/dash/profile')
+            }
         } catch (err) {
-            Swal.fire("Password do not match", '', 'error')
+            console.error(err);
+            alert(`Can't updated the password, verify`);
         }
     }
 

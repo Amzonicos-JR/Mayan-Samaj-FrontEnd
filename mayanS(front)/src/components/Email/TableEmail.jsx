@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../Index";
 import { Email } from "./Email";
+import Swal from 'sweetalert2'
 
 const TableEmail = () => {
 
@@ -12,7 +13,7 @@ const TableEmail = () => {
     const getEmails = async () => {
         try {
             const { data } = await axios(`http://localhost:3000/email/get/${id}`)
-            setEmail(data.email)            
+            setEmail(data.email)
         } catch (err) {
             console.log(err)
         }
@@ -28,6 +29,32 @@ const TableEmail = () => {
         }
     }
 
+    const resetAdd = async () => {
+        try {
+            document.getElementById('inputSubject').value = '',
+                document.getElementById('inputMessage').value = '',
+                document.getElementById('inputForPerson').value = ''
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const sendEmail = async () => {
+        try {
+            let formData = {
+                subject: document.getElementById('inputSubject').value,
+                message: document.getElementById('inputMessage').value,
+                forPerson: document.getElementById('inputForPerson').value,
+            }
+            const { data } = await axios.post(`http://localhost:3000/email/send/${id}`, formData)
+            getEmails()
+            Swal.fire(data.message, '', 'success')
+            resetAdd()
+        } catch (error) {
+            Swal.fire("Error sending email", '', 'error')
+        }
+    }
+
     useEffect(() => {
         getEmails();
     }, []);
@@ -35,6 +62,37 @@ const TableEmail = () => {
     return (
         <>
             <br />
+            <h1 className="text-center">Email</h1>
+            <br />
+            <div className="text-center">
+                <button data-bs-toggle="modal" data-bs-target="#exampleModal2" type="button" class="btn btn-outline-primary">New Email</button>
+            </div>
+            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Enter your email</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="">
+                                <label htmlFor="inputSubject" className="form-label">Subject:</label>
+                                <input placeholder="Enter Subject" type="text" className="form-control" id="inputSubject" required />
+                                <br />
+                                <label htmlFor="inputMessage" className="form-label">Message:</label>
+                                <input placeholder="Enter message" type="text" className="form-control" id="inputMessage" required />
+                                <br />
+                                <label htmlFor="inputForPerson" className="form-label">For:</label>
+                                <input placeholder="Enter email" type="email" className="form-control" id="inputForPerson" required />
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button onClick={() => sendEmail()} type="button" class="btn btn-primary" data-bs-dismiss="modal">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <table className="table table-striped">
                 <thead>
                     <tr className="text-center">
@@ -68,7 +126,7 @@ const TableEmail = () => {
                                                     <div className="modal-body">
                                                         <div className="container" style={{ display: 'flex', justifyContent: 'center' }}>
                                                             <div className="d-flex flex-wrap">
-                                                                {email.map(({  _id, from, subject, date, message, forPerson }, i) => (
+                                                                {email.map(({ _id, from, subject, date, message, forPerson }, i) => (
                                                                     <>
                                                                         <div
                                                                             key={i}
@@ -79,7 +137,7 @@ const TableEmail = () => {
                                                                             <br />
                                                                             <div className="card-body" style={{ backgroundColor: 'rgb(113, 183, 230)' }}>
                                                                                 <h5 className="card-title">Subject: {subject}</h5>
-                                                                                <h5 className="card-title">Date: {date}</h5>                                                                                
+                                                                                <h5 className="card-title">Date: {date}</h5>
                                                                             </div>
                                                                             <div className="card-body" style={{ backgroundColor: 'rgb(113, 183, 230)' }}>
                                                                                 <h5 className="card-title">Message: {message}</h5>
