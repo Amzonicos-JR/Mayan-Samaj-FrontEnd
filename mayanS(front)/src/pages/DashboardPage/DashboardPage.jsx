@@ -20,17 +20,67 @@ export const DashboardPage = () => {
       <>
         {x === "ADMINAM" ? (
           <>
+            <li className="nav-item">
+              <Link to={"user"} className="nav-link">
+                Workers <i className="bi bi-cursor"></i>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"contractor"} className="nav-link">
+                Contractors <i className="bi bi-cursor"></i>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"oficios"} className="nav-link">
+                Jobs <i className="bi bi-cursor"></i>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"payments"} className="nav-link">
+                Payment Method <i className="bi bi-cursor"></i>
+              </Link>
+            </li>
             <li onClick={() => logOut()} className="nav-item">
               <Link className="nav-link">
                 LogOut  <i className="bi bi-box-arrow-left"></i>
               </Link>
             </li>
           </>
-        ) : x === "ADMIN" ? (
+        ) : x === "CONTRACTOR" ? (
           <>
+            <li className="nav-item">
+              <Link to={"profile"} className="nav-link">
+                Profile <i class="bi bi-person-badge"></i>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"receipts"} className="nav-link">
+                Receipt <i class="bi bi-cursor"></i>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"email"} className="nav-link">
+                Email <i class="bi bi-cursor"></i>
+              </Link>
+            </li>
+            <li onClick={() => logOut()} className="nav-item">
+              <Link className="nav-link">
+                LogOut  <i className="bi bi-box-arrow-left"></i>
+              </Link >
+            </li >                   
           </>
         ) : (
           <>
+            <li className="nav-item">
+              <Link to={"profile"} className="nav-link">
+                Profile <i class="bi bi-person-badge"></i>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"email"} className="nav-link">
+                Email <i class="bi bi-cursor"></i>
+              </Link>
+            </li>
             <li onClick={() => logOut()} className="nav-item">
               <Link className="nav-link">
                 LogOut  <i className="bi bi-box-arrow-left"></i>
@@ -61,7 +111,7 @@ export const DashboardPage = () => {
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
       />
-      <div>
+      <div >
         {/* <!-- Inicio del menu --> */}
         <nav className="navbar navbar-expand-md navbar-dark bg-dark">
           <div className="container-fluid">
@@ -69,7 +119,7 @@ export const DashboardPage = () => {
             <a className="navbar-brand active">
               <i className="bi bi-person-circle"></i>
               <span className="text-info"> Dashboard </span>
-              
+
             </a>
             {/* <!-- boton del menu para resolucion movil --> */}
             <button

@@ -6,8 +6,35 @@ import App from './App'
 import { DashboardPage } from './pages/DashboardPage/DashboardPage';
 import { HomePage } from './pages/HomePage/HomePage';
 import { NDash } from './pages/NDashBoard/NDash';
+import { RegisterW } from './pages/Register/RegisterW';
+import { RegisterC } from './pages/Register/RegisterC';
 
 /* ADMINAM */
+// ---# Users #---
+import { UserPage } from './pages/Users/UserPage';
+import { GetUser } from './pages/Users/GetUser';
+import { UpdateUser } from './pages/Users/UpdateUser';
+// --# Contractors #---
+import { ContractorPage } from './pages/Contractors/ContractorPage';
+import { GetContractor } from './pages/Contractors/GetContractor';
+import { UpdateContractor } from './pages/Contractors/UpdateContractor';
+//  --------------- Oficios ---------------
+import { OficioPage } from './pages/Oficios/OficioPage';
+import { AddOficio } from './pages/Oficios/AddOficio';
+import { GetOficios } from './pages/Oficios/GetOficios';
+import { UpdateOficio } from './pages/Oficios/UpdateOficio';
+//  --------------- Payments ---------------
+import { PaymentPage } from './pages/PaymentMethods/PaymentMethodPage';
+import { AddPaymentMethod } from './pages/PaymentMethods/AddPaymentMethod';
+import { GetPayments } from './pages/PaymentMethods/GetPaymentMethods';
+import { UpdatePayment } from './pages/PaymentMethods/UpdatePaymentMethod'; 
+ 
+import { EditUser } from './pages/Profile/EditUser';
+import { GetProfile } from './pages/Profile/GetProfile';
+import { ProfilePage } from './pages/Profile/ProfilePage';
+import { EditEmail } from './pages/Profile/EditEmail';
+import ReceiptPage from './pages/Receipt/ReceiptPage';
+import EmailPage from './pages/EmailPage';
 
 /* CLIENT */
 
@@ -37,14 +64,124 @@ export const Index = () => {
     }, [])
 
     const ADMINAMRoutes = [
-
+        {
+            path: 'user',
+            element: <UserPage></UserPage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetUser></GetUser>
+                },
+                {
+                    path: 'updateuser/:_id',
+                    element: <UpdateUser></UpdateUser>
+                }
+            ]
+        },
+        {
+            path: 'contractor',
+            element: <ContractorPage></ContractorPage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetContractor></GetContractor>
+                },
+                {
+                    path: 'updateC/:_id',
+                    element: <UpdateContractor></UpdateContractor>
+                }
+            ]
+        },
+        {
+            path: 'oficios',
+            element: <OficioPage></OficioPage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetOficios></GetOficios>
+                },
+                {
+                    path: 'addoficio',
+                    element: <AddOficio></AddOficio>
+                },
+                {
+                    path: 'updateO/:_id',
+                    element: <UpdateOficio></UpdateOficio>
+                }
+            ]
+        },
+        {
+            path: 'payments',
+            element: <PaymentPage></PaymentPage>,
+            children: [
+                {
+                    path: '',
+                    element: <GetPayments></GetPayments>
+                },
+                {
+                    path: 'addpayment',
+                    element: <AddPaymentMethod></AddPaymentMethod>
+                },
+                {
+                    path: 'updateP/:_id',
+                    element: <UpdatePayment></UpdatePayment>
+                } 
+            ]
+        }
     ]
 
     const CONTRACTORRoutes = [
+        {
+            path: 'profile',
+            element: <ProfilePage/>,
+            children: [
+                {
+                    path: '',
+                    element: <GetProfile/>
+                },
+                {
+                    path: 'editPassword',
+                    element: <EditUser/>
+                },
+                {
+                    path: 'editEmail',
+                    element: <EditEmail/>
+                }
+            ]
+        },
+        {
+            path: 'receipts',
+            element: <ReceiptPage></ReceiptPage>
+        },
+        {
+            path: 'email',
+            element: <EmailPage></EmailPage>
+        }
     ]
 
     const WORKERRoutes = [
-
+        {
+            path: 'profile',
+            element: <ProfilePage />,
+            children: [
+                {
+                    path: '',
+                    element: <GetProfile />
+                },
+                {
+                    path: 'editPassword',
+                    element: <EditUser />
+                },
+                {
+                    path: 'editEmail',
+                    element: <EditEmail/>
+                }
+            ]
+        },
+        {
+            path: 'email',
+            element: <EmailPage></EmailPage>
+        }
     ]
 
     const routes = createBrowserRouter([
@@ -55,23 +192,34 @@ export const Index = () => {
             children: [
                 {
                     path: '/',
-                    element: <HomePage/>
+                    element: <HomePage />
                 },
                 {
                     path: '/dash',
-                    element: <DashboardPage></DashboardPage> 
+                    element: loggedIn ? <DashboardPage></DashboardPage> : <LoginPage></LoginPage>,
+                    children: role === 'ADMINAM' ? ADMINAMRoutes :
+                        role === 'CONTRACTOR' ? CONTRACTORRoutes :
+                            WORKERRoutes
                 },
                 {
                     path: '/ndash',
                     element: loggedIn ? <NDash></NDash> : <LoginPage></LoginPage>,
-                    children: role === 'ADMINAM' ? ADMINAMRoutes : 
+                    children: role === 'ADMINAM' ? ADMINAMRoutes :
                         role === 'CONTRACTOR' ? CONTRACTORRoutes :
-                            WORKERRoutes 
+                            WORKERRoutes
                 },
                 {
                     path: '/login',
                     element: <LoginPage></LoginPage>
 
+                },
+                {
+                    path: '/rw',
+                    element: <RegisterW></RegisterW>
+                },
+                {
+                    path: '/rc',
+                    element: <RegisterC></RegisterC>
                 }
             ]
         }
