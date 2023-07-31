@@ -33,6 +33,8 @@ import { EditUser } from './pages/Profile/EditUser';
 import { GetProfile } from './pages/Profile/GetProfile';
 import { ProfilePage } from './pages/Profile/ProfilePage';
 import { EditEmail } from './pages/Profile/EditEmail';
+import ReceiptPage from './pages/Receipt/ReceiptPage';
+import EmailPage from './pages/EmailPage';
 
 /* CLIENT */
 
@@ -146,6 +148,14 @@ export const Index = () => {
                     element: <EditEmail/>
                 }
             ]
+        },
+        {
+            path: 'receipts',
+            element: <ReceiptPage></ReceiptPage>
+        },
+        {
+            path: 'email',
+            element: <EmailPage></EmailPage>
         }
     ]
 
@@ -167,6 +177,10 @@ export const Index = () => {
                     element: <EditEmail/>
                 }
             ]
+        },
+        {
+            path: 'email',
+            element: <EmailPage></EmailPage>
         }
     ]
 

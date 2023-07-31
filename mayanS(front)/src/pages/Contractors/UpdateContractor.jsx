@@ -35,10 +35,10 @@ export const UpdateContractor = () => {
             }
             const { data } = await axios.put(`http://localhost:3000/user/update/${_id}`, userUp, { headers: headers })
             // console.log(user, 'userss')
-            getC();
-            // alert(`${data.message}`)
             Swal.fire(data.message, '', 'success')
+            getC();
             navigate('/dash/contractor')
+            // alert(`${data.message}`)
         } catch (err) {
             console.error(err)
         }

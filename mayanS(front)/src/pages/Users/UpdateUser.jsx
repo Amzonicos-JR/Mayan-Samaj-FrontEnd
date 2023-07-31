@@ -4,19 +4,19 @@ import axios from "axios";
 import { useEffect } from "react";
 import Swal from 'sweetalert2'
 export const UpdateUser = () => {
-    const [user, setUser] = useState({});
+    const [user, setWorker] = useState({});
     const navigate = useNavigate();
     const { _id } = useParams();
     const headers = {
         'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('token')
     }
-    const getUser = async () => {
+    const getW = async () => {
         try {
             const { data } = await axios.get(`http://localhost:3000/user/getAccount/${_id}`, { headers: headers })
             if (data) {
                 console.log(data, 'a')
-                setUser(data.user)
+                setWorker(data.user)
             }
 
         } catch (err) {
@@ -35,10 +35,8 @@ export const UpdateUser = () => {
                 // phone: document.getElementById('inputPhone').value            
             }
             const { data } = await axios.put(`http://localhost:3000/user/update/${_id}`, userUp, { headers: headers })
-            console.log(user, 'userss')
-            getUser();
             Swal.fire(data.message, '', 'success')
-
+            getW();
             navigate('/dash/user')
         } catch (err) {
             console.error(err)
@@ -46,7 +44,7 @@ export const UpdateUser = () => {
     }
 
     useEffect(() => {
-        getUser();
+        getW();
     }, [])
     return (
         <>

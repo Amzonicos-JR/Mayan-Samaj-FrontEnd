@@ -78,7 +78,7 @@ export const LoginPage = () => {
 
   return (
     <>
-      <div className='container'>
+      <div className='containerLogin'>
         <form className='contactForm'>
           <div className='contentform '>
             <h1>Login</h1>
@@ -91,8 +91,6 @@ export const LoginPage = () => {
               <input type="password" id="LoginPassword" name='password' onChange={handleChange} />
             </div>
             <button onClick={(e) => logIn(e)} type="button">Login</button>
-            <br></br>
-          </div>
           {/* Modal para register */}
           <div className="">
             <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -113,6 +111,7 @@ export const LoginPage = () => {
                 </div>
               </div>
             </div>
+          </div>
           </div>
         </form>
       </div>

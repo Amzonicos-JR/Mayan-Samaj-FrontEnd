@@ -73,9 +73,6 @@ export const TableProfile = () => {
             <div class="profile-card__txt">
               Phone: <strong>{user.phone}</strong>
             </div>
-            <div class="profile-card__txt">
-              Role:  <strong> {user.role}</strong>
-            </div>
             {/* <div class="profile-card-loc">
               <span class="profile-card-loc__txt">Phone: {user.phone}</span>
             </div>
